@@ -1,15 +1,15 @@
 package net.habibksentini.stringcalculator;
 
+import static java.util.Arrays.stream;
+
 public class StringCalculator {
 
-    public int add(String numbers) {
-        if (numbers.equals("1")) {
-            return 1;
+    public int add(String amountOfNumbers) {
+        if (amountOfNumbers.equals("")){
+            return 0;
         }
-        if (numbers.equals("1,2")) {
-            return 3;
-        }
-        return 0;
+        String[] numbers = amountOfNumbers.split(",");
+        int sum = stream(numbers).mapToInt(Integer::valueOf).sum();
+        return sum;
     }
-
 }

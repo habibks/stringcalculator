@@ -34,4 +34,10 @@ public class StringCalculatorTest {
         int result = stringCalculator.add("1,2");
         assertThat(result, is(3));
     }
+
+    @Test
+    public void given_amount_of_numbers_then_return_their_sum(){
+        int result = stringCalculator.add("3,8,9");
+        assertThat(result, is(20));
+    }
 }
