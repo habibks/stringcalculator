@@ -46,4 +46,10 @@ public class StringCalculatorTest {
         int result = stringCalculator.add("1\n2,3\n8");
         assertThat(result, is(14));
     }
+
+    @Test
+    public void given_delimiter_and_amount_of_numbers_then_return_their_sum(){
+        int result = stringCalculator.add("//;\n1;2");
+        assertThat(result, is(3));
+    }
 }

@@ -1,5 +1,6 @@
 package net.habibksentini.stringcalculator;
 
+import static java.lang.String.valueOf;
 import static java.util.Arrays.stream;
 
 public class StringCalculator {
@@ -11,15 +12,21 @@ public class StringCalculator {
         if (amountOfNumbers.equals(EMPTY)) {
             return 0;
         }
-        amountOfNumbers = replaceNewlineWithDelimiter(amountOfNumbers);
-        String[] numbers = amountOfNumbers.split(DELIMITER);
+
+        String delimiter = DELIMITER;
+        if(amountOfNumbers.startsWith("//")){
+            delimiter = amountOfNumbers.substring(2,3);
+            amountOfNumbers = amountOfNumbers.substring(4);
+        };
+        amountOfNumbers = replaceNewlineWithDelimiter(amountOfNumbers, delimiter);
+        String[] numbers = amountOfNumbers.split(delimiter);
         return stream(numbers)
                 .mapToInt(Integer::valueOf)
                 .sum();
     }
 
-    private String replaceNewlineWithDelimiter(String amountOfNumbers) {
-        return amountOfNumbers.replaceAll("[\\n]", DELIMITER);
+    private String replaceNewlineWithDelimiter(String amountOfNumbers, String delimiter) {
+        return amountOfNumbers.replaceAll("[\\n]", delimiter);
     }
 
 }
