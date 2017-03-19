@@ -29,4 +29,9 @@ public class StringCalculatorTest {
         assertThat(result, is(1));
     }
 
+    @Test
+    public void given_1_2_then_return_3(){
+        int result = stringCalculator.add("1,2");
+        assertThat(result, is(3));
+    }
 }
