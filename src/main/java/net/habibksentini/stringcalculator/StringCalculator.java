@@ -58,6 +58,7 @@ public class StringCalculator {
         String[] numbers = amountOfNumbers.split(delimiter);
         return stream(numbers)
                 .mapToInt(Integer::valueOf)
+                .filter(number -> number < 1000)
                 .sum();
     }
 

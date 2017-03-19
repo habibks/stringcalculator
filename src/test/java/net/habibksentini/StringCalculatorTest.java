@@ -63,6 +63,13 @@ public class StringCalculatorTest {
             assertThat(e.getMessage(), is("negatives not allowed: -2 -1"));
             throw e;
         }
-
     }
+
+    @Test
+    public void given_amount_of_numbers_with_number_bigger_then_1000_then_ignore_this_number_and_return_the_sum() {
+        int result = stringCalculator.add("1000,2,4,1");
+        assertThat(result, is(7));
+    }
+
+
 }
