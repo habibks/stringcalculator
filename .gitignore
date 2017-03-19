@@ -1,0 +1,12 @@
+# GRADLE
+target/
+build/
+.gradle/
+
+# IDEA
+.idea/
+*.iml
+*.ipr
+
+
+
