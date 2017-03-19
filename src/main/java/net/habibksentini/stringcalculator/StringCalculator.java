@@ -24,26 +24,34 @@ public class StringCalculator {
             delimiter = readSpecifiedDelimiter(amountOfNumbers);
             amountOfNumbers = removeSpecifiedDelimiterLine(amountOfNumbers);
         }
-        ;
         return add(amountOfNumbers, delimiter);
     }
 
     private void handleNegativeNumbers(String amountOfNumbers) {
+        List<Integer> negativeNumbers = readNegativeNumbers(amountOfNumbers);
+        if (negativeNumbers.size() > 0) {
+            String exceptionMessage = buildNegativeNumberExceptionMessage(negativeNumbers);
+            throw new IllegalArgumentException(exceptionMessage);
+        }
+    }
+
+    private String buildNegativeNumberExceptionMessage(List<Integer> negativeNumbers) {
+        StringBuilder exceptionMessageBuilder = new StringBuilder("negatives not allowed: ");
+        negativeNumbers.stream().forEach(negativeNumber -> exceptionMessageBuilder.append(negativeNumber).append(" "));
+        String exceptionMessage = exceptionMessageBuilder.toString();
+        exceptionMessage = exceptionMessage.substring(0, exceptionMessage.length() - 1);
+        return exceptionMessage;
+    }
+
+    private List<Integer> readNegativeNumbers(String amountOfNumbers) {
         Pattern pattern = compile("-[0-9]+");
         Matcher matcher = pattern.matcher(amountOfNumbers);
         List<Integer> negativeNumbers = new ArrayList<>();
         while (matcher.find()) {
             negativeNumbers.add(valueOf(matcher.group()));
         }
-        if (negativeNumbers.size() > 0){
-            StringBuilder exceptionMessageBuilder = new StringBuilder("negatives not allowed: ");
-            negativeNumbers.stream().forEach(negativeNumber -> exceptionMessageBuilder.append(negativeNumber).append(" "));
-            String exceptionMessage = exceptionMessageBuilder.toString();
-            exceptionMessage =  exceptionMessage.substring(0,  exceptionMessage.length() - 1);
-            throw new IllegalArgumentException(exceptionMessage);
-        }
+        return negativeNumbers;
     }
-
 
     private int add(String amountOfNumbers, String delimiter) {
         amountOfNumbers = replaceNewlinesWithDelimiters(amountOfNumbers, delimiter);
