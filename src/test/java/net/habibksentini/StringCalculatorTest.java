@@ -23,4 +23,10 @@ public class StringCalculatorTest {
         assertThat(result, is(0));
     }
 
+    @Test
+    public void given_1_then_return_1(){
+        int result = stringCalculator.add("1");
+        assertThat(result, is(1));
+    }
+
 }
