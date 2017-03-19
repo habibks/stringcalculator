@@ -44,7 +44,8 @@ public class StringCalculator {
     }
 
     private List<Integer> readNegativeNumbers(String amountOfNumbers) {
-        Pattern pattern = compile("-[0-9]+");
+        String negativeNumbersRegex = "-[0-9]+";
+        Pattern pattern = compile(negativeNumbersRegex);
         Matcher matcher = pattern.matcher(amountOfNumbers);
         List<Integer> negativeNumbers = new ArrayList<>();
         while (matcher.find()) {
@@ -71,11 +72,13 @@ public class StringCalculator {
     }
 
     private boolean hasASpecifiedDelimiter(String amountOfNumbers) {
-        return amountOfNumbers.startsWith("//");
+        String specifiedDelimiterPrefix = "//";
+        return amountOfNumbers.startsWith(specifiedDelimiterPrefix);
     }
 
     private String replaceNewlinesWithDelimiters(String amountOfNumbers, String delimiter) {
-        return amountOfNumbers.replaceAll("[\\n]", delimiter);
+        String newLineRegex = "[\\n]";
+        return amountOfNumbers.replaceAll(newLineRegex, delimiter);
     }
 
 }
