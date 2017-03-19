@@ -8,12 +8,13 @@ public class StringCalculator {
     public static String DELIMITER = ",";
 
     public int add(String amountOfNumbers) {
-
-        if (amountOfNumbers.equals(EMPTY)){
+        if (amountOfNumbers.equals(EMPTY)) {
             return 0;
         }
+        amountOfNumbers = amountOfNumbers.replaceAll("[\\n]", DELIMITER);
         String[] numbers = amountOfNumbers.split(DELIMITER);
-        int sum = stream(numbers).mapToInt(Integer::valueOf).sum();
-        return sum;
+        return stream(numbers)
+                .mapToInt(Integer::valueOf)
+                .sum();
     }
 }

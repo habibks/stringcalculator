@@ -40,4 +40,10 @@ public class StringCalculatorTest {
         int result = stringCalculator.add("3,8,9");
         assertThat(result, is(20));
     }
+
+    @Test
+    public void given_amount_of_numbers_with_new_lines_between_numbers_then_return_their_sum(){
+        int result = stringCalculator.add("1\n2,3\n8");
+        assertThat(result, is(14));
+    }
 }
