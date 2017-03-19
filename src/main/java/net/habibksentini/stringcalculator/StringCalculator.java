@@ -11,10 +11,15 @@ public class StringCalculator {
         if (amountOfNumbers.equals(EMPTY)) {
             return 0;
         }
-        amountOfNumbers = amountOfNumbers.replaceAll("[\\n]", DELIMITER);
+        amountOfNumbers = replaceNewlineWithDelimiter(amountOfNumbers);
         String[] numbers = amountOfNumbers.split(DELIMITER);
         return stream(numbers)
                 .mapToInt(Integer::valueOf)
                 .sum();
     }
+
+    private String replaceNewlineWithDelimiter(String amountOfNumbers) {
+        return amountOfNumbers.replaceAll("[\\n]", DELIMITER);
+    }
+
 }
