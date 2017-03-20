@@ -55,7 +55,7 @@ public class StringCalculator {
     }
 
     private int add(String amountOfNumbers, String delimiter) {
-        amountOfNumbers = replaceNewlinesWithDelimiters(amountOfNumbers, delimiter);
+        amountOfNumbers = replaceNewLinesWithDelimiters(amountOfNumbers, delimiter);
         String[] numbers = amountOfNumbers.split(delimiter);
         return stream(numbers)
                 .mapToInt(Integer::valueOf)
@@ -76,7 +76,7 @@ public class StringCalculator {
         return amountOfNumbers.startsWith(specifiedDelimiterPrefix);
     }
 
-    private String replaceNewlinesWithDelimiters(String amountOfNumbers, String delimiter) {
+    private String replaceNewLinesWithDelimiters(String amountOfNumbers, String delimiter) {
         String newLineRegex = "[\\n]";
         return amountOfNumbers.replaceAll(newLineRegex, delimiter);
     }
