@@ -1,5 +1,5 @@
 String Calculator Kata
-======================
+====================== 
 After reading a [blog](http://osherove.com/tdd-kata-1/) of [Roy Osherove](https://twitter.com/royosherove), I decided to have a go at the exercise.
 
 
